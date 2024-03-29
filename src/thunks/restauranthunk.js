@@ -13,3 +13,23 @@ export const createRestaurants=createAsyncThunk(
       },
 )
 
+export const listRestaurants=createAsyncThunk(
+    "restaurant/listRestaurants",
+    async (page=1) => {
+        // We will make api call with axios
+       let result= await axios.get(`http://localhost:1337/api/restaurants?pagination[page]=${page}&pagination[pageSize]=5`);
+       return result.data;
+
+      },
+)
+
+export const deleteRestaurant=createAsyncThunk(
+    "restaurant/deleteRestaurants",
+    async (id) => {
+        // We will make api call with axios
+       let result= await axios.delete(`http://localhost:1337/api/restaurants/${id}`);
+       return result.data;
+
+      },
+)
+

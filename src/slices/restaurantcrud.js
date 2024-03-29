@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import {createRestaurants} from "../thunks/restauranthunk";
+import {createRestaurants, deleteRestaurant, listRestaurants} from "../thunks/restauranthunk";
 
 const initialState = {
-    list:[]
+    list:[],
+    totalRecords:0,
+    addResponse:{}
   }
 
   export const restaurantSlice = createSlice({
@@ -17,15 +19,22 @@ const initialState = {
         // if you have some api operations you can comfigure in extraReducers
 
         builder.addCase(createRestaurants.fulfilled,(state,action)=>{
-          debugger;
+          //state.addResponse={id:action.payload.id}
 
 
         }).addCase(createRestaurants.rejected,(state,action)=>{
-          debugger;
+          //state.addResponse={id:null,error:action.payload}
 
         }).addCase(createRestaurants.pending,(state,action)=>{
-          debugger;
+        
             
+        }).addCase(listRestaurants.fulfilled,(state,action)=>{
+         
+          state.list=action.payload.data
+          state.totalRecords=action.payload.meta.pagination.total
+
+        }).addCase(deleteRestaurant.fulfilled,(state,action)=>{
+          console.log("Deleted");
         })
 
     }

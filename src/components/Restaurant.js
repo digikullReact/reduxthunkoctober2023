@@ -1,9 +1,11 @@
 import React ,{useState} from 'react'
 import {createRestaurants} from "../thunks/restauranthunk";
 import { useDispatch } from 'react-redux';
+import Alert from './Alert';
 
 const Restaurant = () => {
   const dispatch=  useDispatch()
+  const [alertType,setAlertType]=useState()
     const [state,setState]=useState({
         name:"",
         city:"",
@@ -17,36 +19,57 @@ const Restaurant = () => {
     }
 
     const handleClick=()=>{
-        dispatch(createRestaurants(state))
+        dispatch(createRestaurants(state)).then(result=>{
+          setAlertType({type:"alert-primary",message:"Restaurant Created SuccessFully"})
+          setState({
+            name:"",
+            city:"",
+            country:"",
+            state:""
+        })
+
+          setTimeout(()=>{
+            setAlertType(undefined)
+
+          },2000)
+      
+
+        }).catch(err=>{
+          console.log(err);
+        })
 
     }
   return (
-    <div className="container">
+    <div >
       <h2>Publish Your Restaurant</h2>
+      {
+        alertType? <Alert type={alertType}/>:""
+      }
+     
       <form>
         <div className="row">
           <div className="col-md-6">
             <div className="mb-3">
               <label htmlFor="firstName" className="form-label"> Name</label>
-              <input type="text" className="form-control"  name='name' onChange={handleChange} />
+              <input type="text" className="form-control"  value={state.name} name='name' onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="mb-3">
               <label htmlFor="lastName" className="form-label">City</label>
-              <input type="text" className="form-control" name='city' onChange={handleChange} />
+              <input type="text" className="form-control" value={state.city} name='city' onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="mb-3">
               <label htmlFor="email" className="form-label">State</label>
-              <input type="text" className="form-control"  name='state' onChange={handleChange} />
+              <input type="text" className="form-control"  value={state.state} name='state' onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="mb-3">
               <label htmlFor="phone" className="form-label">Country</label>
-              <input type="tel" className="form-control" name='country' onChange={handleChange} />
+              <input type="tel" className="form-control" value={state.country} name='country' onChange={handleChange} />
             </div>
           </div>
         </div>
