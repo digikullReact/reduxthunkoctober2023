@@ -1,6 +1,7 @@
 import React,{useMemo, useState} from 'react'
 
 // use of useMemo hook // it memoized
+// it memoizes the return value of function 
 const UseMem = () => {
 
     const [heavy,setHeavy]=useState(false);

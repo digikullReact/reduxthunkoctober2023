@@ -1,6 +1,6 @@
 import React,{useEffect,memo} from 'react'
 
-const Child = memo(({data}) => {
+const Child =({data}) => {
     console.log(" Child Component is re rendering")
 /*
     // mounting phase
@@ -17,9 +17,9 @@ const Child = memo(({data}) => {
   return (
     <div>
 
-        <h1>Child Component {data} </h1>
+        <h1>Child Component  </h1>
     </div>
   )
-})
+}
 
-export default Child
+export default  memo(Child)

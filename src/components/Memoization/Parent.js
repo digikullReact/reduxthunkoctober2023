@@ -10,6 +10,7 @@ const handleClick=()=>{
     if (state){
         setData("modified");
     }
+ 
     console.log("state changed");
     setState(!state);
 }
