@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import Restaurant from './components/Restaurant';
 import List from './components/List';
+import Parent from './components/Memoization/Parent';
+import UseMem from './components/Memoization/UseMem';
 
 
 const router = createBrowserRouter([
@@ -28,16 +30,25 @@ const router = createBrowserRouter([
       }
 
     ]
-  },
+  },   
+
+  {
+    path:"/parent",
+    element:<Parent/>
+  }
+  ,{
+    path:"/usememo",
+    element:<UseMem/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+ 
   <Provider store={store}>
   <RouterProvider router={router} />
   </Provider>,
-  </React.StrictMode>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function
