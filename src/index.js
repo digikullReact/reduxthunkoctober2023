@@ -14,6 +14,8 @@ import List from './components/List';
 import Parent from './components/Memoization/Parent';
 import UseMem from './components/Memoization/UseMem';
 import Home from './components/Home';
+import Refhook from './components/Refhook';
+import Refhook2 from './components/Refhook2';
 
 
 const router = createBrowserRouter([
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
   ,{
     path:"/home",
     element:<Home/>
+  },
+  ,{
+    path:"/refhook",
+    element:<Refhook/>
+  }
+  ,{
+    path:"/refhook2",
+    element:<Refhook2/>
   }
 ]);
 
