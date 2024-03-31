@@ -13,6 +13,7 @@ import Restaurant from './components/Restaurant';
 import List from './components/List';
 import Parent from './components/Memoization/Parent';
 import UseMem from './components/Memoization/UseMem';
+import Home from './components/Home';
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   ,{
     path:"/usememo",
     element:<UseMem/>
+  },
+  ,{
+    path:"/home",
+    element:<Home/>
   }
 ]);
 

@@ -9,3 +9,5 @@ const UseCallback = () => {
 }
 
 export default UseCallback
+
+// usecallback ,useReducer and useContext
