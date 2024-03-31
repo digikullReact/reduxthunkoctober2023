@@ -16,6 +16,7 @@ import UseMem from './components/Memoization/UseMem';
 import Home from './components/Home';
 import Refhook from './components/Refhook';
 import Refhook2 from './components/Refhook2';
+import Reducer from './components/Reducer';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   ,{
     path:"/refhook2",
     element:<Refhook2/>
+  },
+  ,{
+    path:"/reducer",
+    element:<Reducer/>
   }
 ]);
 
